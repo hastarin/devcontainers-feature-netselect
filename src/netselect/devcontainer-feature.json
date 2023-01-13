@@ -47,7 +47,7 @@
                 "us"
             ],
             "default": "default",
-            "description": "Select or enter a country code to only consider mirrors from that country."
+            "description": "Debian ONLY - Select or enter a country code to only consider mirrors from that country."
         }
     }
 }

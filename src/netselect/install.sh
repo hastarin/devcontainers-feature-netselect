@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -echo
+set -e
 
 # Clean up
 rm -rf /var/lib/apt/lists/*
@@ -47,17 +47,39 @@ check_packages() {
 
 export DEBIAN_FRONTEND=noninteractive
 
-check_packages curl wget netselect netselect-apt
-
 install() {
-    if [[ "$COUNTRY" == "default" ]]; then
-        netselect-apt
+    DIST_ID=$(lsb_release -is)
+    
+    if [[ "$DIST_ID" == "Debian" ]]; then
+        echo "(*) Configuring fastest mirror using netselect"
+        sleep 10
+        check_packages sed curl wget netselect netselect-apt
+        if [[ "$COUNTRY" == "default" ]]; then
+            netselect-apt
+        else
+            echo "Using country code of $COUNTRY"
+            netselect-apt -c $COUNTRY
+        fi
+        MIRROR=$(grep "deb " sources.list | head -n 1 | cut -d " " -f 2)
+        echo "Configuring mirror with $MIRROR"
+        sleep 10
+        sed -i "s|^deb http://deb.debian.org/debian |deb $MIRROR |" /etc/apt/sources.list
+        rm sources.list
+    elif [[ $"DIST_ID" == "Ubuntu" ]]; then
+        echo "(*) Configuring fastest mirror using netselect"
+        sleep 10
+        check_packages sed curl wget
+        wget http://ftp.us.debian.org/debian/pool/main/n/netselect/netselect_0.3.ds1-29_amd64.deb
+        dpkg -i netselect_0.3.ds1-29_amd64.deb
+        MIRROR=$(netselect -s 1 -t 40 $(wget -qO - mirrors.ubuntu.com/mirrors.txt) | tr -s " " | cut -d " " -f 3)
+        echo "Configuring mirror with $MIRROR"
+        sleep 10
+        sed -i "s|^deb http://archive.ubuntu.com/ubuntu |deb $MIRROR |" /etc/apt/sources.list
     else
-        netselect-apt -c $COUNTRY
+        echo "Unhandled distribution $DIST_ID"
     fi
 }
 
-echo "(*) Configuring fastest mirror using netselect-apt"
 
 install
 

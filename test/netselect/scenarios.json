@@ -1,0 +1,18 @@
+{
+    "australia_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "netselect": {
+                "country": "au"
+            }
+        }
+    },
+    "australia_ubuntu": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "netselect": {
+                "country": "au"
+            }
+        }
+    }
+}
