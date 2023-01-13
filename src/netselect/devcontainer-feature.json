@@ -1,6 +1,6 @@
 {
-    "name": "netselect-apt",
-    "id": "netselect-apt",
+    "name": "netselect",
+    "id": "netselect",
     "version": "1.0.0",
     "description": "Uses netselect-apt to configure a mirror",
     "options": {
