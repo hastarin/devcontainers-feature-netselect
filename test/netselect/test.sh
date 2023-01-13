@@ -29,8 +29,13 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "mirror.txt exists" cat /tmp/mirror.txt
+check "netselect" netselect
+. /etc/os-release
+if [[ "$ID" == "debian" ]]; then
+    check "netselect-apt" netselect-apt --help
+fi
 check "sources.list" cat /etc/apt/sources.list
+check "mirror.txt exists" cat /tmp/mirror.txt
 
 # Report result
 reportResults

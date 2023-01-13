@@ -53,7 +53,7 @@ check_packages sed curl wget
 install() {
     . /etc/os-release 
 
-    if [[ "$ID" == "Debian" ]]; then
+    if [[ "$ID" == "debian" ]]; then
         echo "(*) Configuring fastest mirror using netselect"
         check_packages netselect netselect-apt
         if [[ "$COUNTRY" == "default" ]]; then
@@ -67,7 +67,7 @@ install() {
         echo $MIRROR > /tmp/mirror.txt
         sed -i "s|^deb http://deb.debian.org/debian |deb $MIRROR |" /etc/apt/sources.list
         rm sources.list
-    elif [[ "$ID" == "Ubuntu" ]]; then
+    elif [[ "$ID" == "ubuntu" ]]; then
         echo "(*) Configuring fastest mirror using netselect"
         wget http://ftp.us.debian.org/debian/pool/main/n/netselect/netselect_0.3.ds1-29_amd64.deb
         dpkg -i netselect_0.3.ds1-29_amd64.deb

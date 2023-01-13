@@ -6,8 +6,9 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "mirror.txt exists" cat /tmp/mirror.txt
+check "netselect-apt" netselect-apt --help
 check "sources.list" cat /etc/apt/sources.list
+check "mirror.txt exists" cat /tmp/mirror.txt
 
 # Report result
 reportResults
