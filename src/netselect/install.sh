@@ -48,7 +48,7 @@ check_packages() {
 
 export DEBIAN_FRONTEND=noninteractive
 
-check_packages sed curl wget
+check_packages sed curl wget ca-certificates
 
 install() {
     . /etc/os-release 
