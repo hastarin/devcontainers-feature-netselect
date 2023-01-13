@@ -1,7 +1,7 @@
 
 # netselect (netselect)
 
-Uses netselect-apt to configure a mirror
+Uses netselect-apt to configure a mirror. Use `overrideFeatureInstallOrder` to ensure it's run first. https://containers.dev/implementors/features/#overrideFeatureInstallOrder
 
 ## Example Usage
 

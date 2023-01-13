@@ -1,8 +1,8 @@
 {
     "name": "netselect",
     "id": "netselect",
-    "version": "1.0.0",
-    "description": "Uses netselect-apt to configure a mirror",
+    "version": "1.0.1",
+    "description": "Uses netselect-apt to configure a mirror. Use `overrideFeatureInstallOrder` to ensure it's run first. https://containers.dev/implementors/features/#overrideFeatureInstallOrder",
     "options": {
         "country": {
             "type": "string",
