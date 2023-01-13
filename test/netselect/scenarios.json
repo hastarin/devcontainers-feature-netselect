@@ -1,18 +1,22 @@
 {
-    "australia_debian": {
+    "install_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "netselect": {}
+        }
+    },
+    "install_debian_country": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "netselect": {
-                "country": "au"
+                "country": "ca"
             }
         }
     },
-    "australia_ubuntu": {
+    "install_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
-            "netselect": {
-                "country": "au"
-            }
+            "netselect": {}
         }
     }
 }
