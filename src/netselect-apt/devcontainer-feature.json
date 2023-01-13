@@ -1,0 +1,53 @@
+{
+    "name": "netselect-apt",
+    "id": "netselect-apt",
+    "version": "1.0.0",
+    "description": "Uses netselect-apt to configure a mirror",
+    "options": {
+        "country": {
+            "type": "string",
+            "proposals": [
+                "am",
+                "au",
+                "at",
+                "by",
+                "be",
+                "br",
+                "bg",
+                "ca",
+                "cl",
+                "cn",
+                "hr",
+                "cz",
+                "dk",
+                "fi",
+                "fr",
+                "de",
+                "hk",
+                "hu",
+                "is",
+                "it",
+                "jp",
+                "kr",
+                "lt",
+                "md",
+                "nl",
+                "nz",
+                "no",
+                "pl",
+                "pt",
+                "ru",
+                "sk",
+                "si",
+                "es",
+                "se",
+                "ch",
+                "tw",
+                "uk",
+                "us"
+            ],
+            "default": "default",
+            "description": "Select or enter a country code to only consider mirrors from that country."
+        }
+    }
+}
