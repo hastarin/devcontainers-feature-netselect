@@ -29,7 +29,7 @@ set -e
 source dev-container-features-test-lib
 
 # Definition specific tests
-check "netselect" netselect
+check "netselect" which netselect
 . /etc/os-release
 if [[ "$ID" == "debian" ]]; then
     check "netselect-apt" netselect-apt --help
