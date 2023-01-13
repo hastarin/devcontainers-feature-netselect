@@ -47,12 +47,14 @@ check_packages() {
 
 export DEBIAN_FRONTEND=noninteractive
 
+check_packages sed curl wget lsb_release
+
 install() {
     DIST_ID=$(lsb_release -is)
     
     if [[ "$DIST_ID" == "Debian" ]]; then
         echo "(*) Configuring fastest mirror using netselect"
-        check_packages sed curl wget netselect netselect-apt
+        check_packages netselect netselect-apt
         if [[ "$COUNTRY" == "default" ]]; then
             netselect-apt
         else
@@ -66,7 +68,6 @@ install() {
         rm sources.list
     elif [[ "$DIST_ID" == "Ubuntu" ]]; then
         echo "(*) Configuring fastest mirror using netselect"
-        check_packages sed curl wget
         wget http://ftp.us.debian.org/debian/pool/main/n/netselect/netselect_0.3.ds1-29_amd64.deb
         dpkg -i netselect_0.3.ds1-29_amd64.deb
         MIRROR=$(netselect -s 1 -t 40 $(wget -qO - mirrors.ubuntu.com/mirrors.txt) | tr -s " " | cut -d " " -f 3)
