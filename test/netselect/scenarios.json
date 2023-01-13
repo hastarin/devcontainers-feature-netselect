@@ -6,7 +6,7 @@
         }
     },
     "install_debian_country": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "image": "debian:latest",
         "features": {
             "netselect": {
                 "country": "ca"
@@ -15,6 +15,12 @@
     },
     "install_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "netselect": {}
+        }
+    },
+    "install_ubuntu_base": {
+        "image": "ubuntu:latest",
         "features": {
             "netselect": {}
         }

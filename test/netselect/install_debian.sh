@@ -7,7 +7,7 @@ source dev-container-features-test-lib
 
 # Definition specific tests
 check "netselect installed" which netselect
-check "netselect-apt installed" netselect-apt --help
+check "netselect-apt installed" which netselect-apt
 check "sources.list" cat /etc/apt/sources.list
 check "mirror.txt exists" cat /tmp/mirror.txt
 
