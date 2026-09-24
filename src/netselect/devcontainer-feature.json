@@ -1,29 +1,46 @@
 {
     "name": "netselect",
     "id": "netselect",
-    "version": "1.0.1",
-    "description": "Uses netselect-apt to configure a mirror. Use `overrideFeatureInstallOrder` to ensure it's run first. https://containers.dev/implementors/features/#overrideFeatureInstallOrder",
+    "version": "2.0.0",
+    "description": "Points apt at a nearby mirror: netselect-apt on Debian, apt's mirror:// method on Ubuntu, or a mirror you choose. Use `overrideFeatureInstallOrder` to ensure it runs first.",
+    "documentationURL": "https://github.com/hastarin/devcontainers-feature-netselect/tree/main/src/netselect",
+    "licenseURL": "https://github.com/hastarin/devcontainers-feature-netselect/blob/main/LICENSE",
+    "keywords": [
+        "apt",
+        "mirror",
+        "netselect",
+        "debian",
+        "ubuntu"
+    ],
     "options": {
+        "mirror": {
+            "type": "string",
+            "default": "",
+            "description": "Archive URL to use instead of auto-selecting one, e.g. http://ftp.au.debian.org/debian or http://apt-cacher:3142/deb.debian.org/debian. Security archives and *-security suites are not changed."
+        },
         "country": {
             "type": "string",
             "proposals": [
                 "am",
-                "au",
                 "at",
-                "by",
+                "au",
                 "be",
-                "br",
                 "bg",
+                "br",
+                "by",
                 "ca",
+                "ch",
                 "cl",
                 "cn",
-                "hr",
                 "cz",
+                "de",
                 "dk",
+                "es",
                 "fi",
                 "fr",
-                "de",
+                "gb",
                 "hk",
+                "hr",
                 "hu",
                 "is",
                 "it",
@@ -32,22 +49,19 @@
                 "lt",
                 "md",
                 "nl",
-                "nz",
                 "no",
+                "nz",
                 "pl",
                 "pt",
                 "ru",
-                "sk",
-                "si",
-                "es",
                 "se",
-                "ch",
+                "si",
+                "sk",
                 "tw",
-                "uk",
                 "us"
             ],
             "default": "default",
-            "description": "Debian ONLY - Select or enter a country code to only consider mirrors from that country."
+            "description": "Debian only: ISO country code; netselect-apt only considers mirrors in that country. Ignored when 'mirror' is set."
         }
     }
 }
