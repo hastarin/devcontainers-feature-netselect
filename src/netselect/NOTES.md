@@ -1,23 +1,3 @@
-
-# netselect (netselect)
-
-Points apt at a nearby mirror: netselect-apt on Debian, apt's mirror:// method on Ubuntu, or a mirror you choose. Use `overrideFeatureInstallOrder` to ensure it runs first.
-
-## Example Usage
-
-```json
-"features": {
-    "ghcr.io/hastarin/devcontainers-feature-netselect/netselect:2": {}
-}
-```
-
-## Options
-
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
-| mirror | Archive URL to use instead of auto-selecting one, e.g. http://ftp.au.debian.org/debian or http://apt-cacher:3142/deb.debian.org/debian. Security archives and *-security suites are not changed. | string | - |
-| country | Debian only: ISO country code; netselect-apt only considers mirrors in that country. Ignored when 'mirror' is set. | string | default |
-
 ## How the mirror is chosen
 
 | Distro | `mirror` set | `mirror` empty (default) |
@@ -58,8 +38,3 @@ The mirror is fixed at image build time. If the image will be built or run on a 
 - Change `netselect:1` to `netselect:2`. `country` still works as before.
 - Ubuntu no longer downloads and runs `netselect`; it uses apt's `mirror://` method instead.
 - `/tmp/mirror.txt` is no longer written.
-
-
----
-
-_Note: This file was auto-generated from the [devcontainer-feature.json](devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
