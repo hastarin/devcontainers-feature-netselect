@@ -1,5 +1,5 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/javascript-node:0-18",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:5-24-trixie",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -8,7 +8,10 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:4": {
+            // Moby packages aren't available for Debian trixie; use Docker CE.
+            "moby": false
+        }
     },
     "remoteUser": "node",
     "postCreateCommand": "npm install -g @devcontainers/cli"

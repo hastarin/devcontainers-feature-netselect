@@ -1,28 +1,54 @@
 {
-    "install_debian": {
-        "image": "mcr.microsoft.com/devcontainers/base:debian",
-        "features": {
-            "netselect": {}
-        }
-    },
-    "install_debian_country": {
-        "image": "debian:latest",
+    "mirror_debian": {
+        "image": "debian:trixie",
         "features": {
             "netselect": {
-                "country": "ca"
+                "mirror": "http://ftp.au.debian.org/debian"
             }
         }
     },
-    "install_ubuntu": {
+    "mirror_debian_bullseye": {
+        "image": "debian:bullseye",
+        "features": {
+            "netselect": {
+                "mirror": "http://ftp.au.debian.org/debian"
+            }
+        }
+    },
+    "mirror_ubuntu": {
+        "image": "ubuntu:24.04",
+        "features": {
+            "netselect": {
+                "mirror": "http://au.archive.ubuntu.com/ubuntu/"
+            }
+        }
+    },
+    "mirror_ubuntu_jammy": {
+        "image": "ubuntu:22.04",
+        "features": {
+            "netselect": {
+                "mirror": "http://au.archive.ubuntu.com/ubuntu/"
+            }
+        }
+    },
+    "mirror_method_ubuntu": {
         "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
         "features": {
             "netselect": {}
         }
     },
-    "install_ubuntu_base": {
-        "image": "ubuntu:latest",
+    "netselect_debian": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
             "netselect": {}
+        }
+    },
+    "netselect_debian_country": {
+        "image": "debian:trixie",
+        "features": {
+            "netselect": {
+                "country": "au"
+            }
         }
     }
 }

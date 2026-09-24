@@ -11,7 +11,7 @@ jobs:
       pull-requests: write
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       - name: "Publish Features"
         uses: devcontainers/action@v1
@@ -35,10 +35,10 @@ jobs:
           git config --global user.name github-actions
           git config pull.rebase false
           branch=automated-documentation-update-$GITHUB_RUN_ID
-          git checkout -b $branch
-          message='Automated documentation update'
+          git checkout -b "$branch"
+          message="Automated documentation update"
           # Add / update and commit
-          git add */**/README.md
+          git add src/*/README.md
           git commit -m 'Automated documentation update [skip ci]' || export NO_UPDATES=true
           # Push
           if [ "$NO_UPDATES" != "true" ] ; then

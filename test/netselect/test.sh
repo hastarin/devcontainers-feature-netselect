@@ -1,41 +1,14 @@
 #!/bin/bash
 
-# This test file will be executed against an auto-generated devcontainer.json that
-# includes the 'netselect' feature with no options.
-#
-# Eg:
-# {
-#    "image": "<..some-base-image...>",
-#    "features": {
-#      "netselect": {}
-#    }
-# }
-#
-# Thus, the value of all options will fall back to the default value in 
-# the feature's 'devcontainer-feature.json'.
-# For the 'netselect' feature, that means the no country option will be used.
-#
-# These scripts are run as 'root' by default. Although that can be changed
-# with the --remote-user flag.
-# 
-# This test can be run with the following command (from the root of this repo)
-#    devcontainer features test \ 
-#                   --features netselect \
-#                   --base-image mcr.microsoft.com/devcontainers/base:ubuntu .
+# Run against an auto-generated devcontainer.json using the feature's default options.
+# The default base image is Ubuntu, so this exercises the mirror:// path. Run with:
+#    devcontainer features test --features netselect --skip-scenarios .
+# Scenario tests (scenarios.json) cover explicit mirrors and netselect-apt on Debian.
 
 set -e
+source "$(dirname "$0")/_assert.sh"
 
-# Optional: Import test library
-source dev-container-features-test-lib
+check "archive uses mirror:// method" sources_contain "mirror://mirrors.ubuntu.com/mirrors.txt"
+check "default archive replaced" sources_lack "http://archive.ubuntu.com/ubuntu"
 
-# Definition specific tests
-check "netselect installed" which netselect
-. /etc/os-release
-if [[ "$ID" == "debian" ]]; then
-    check "netselect-apt installed" netselect-apt --help
-fi
-check "sources.list" cat /etc/apt/sources.list
-check "mirror.txt exists" cat /tmp/mirror.txt
-
-# Report result
 reportResults
